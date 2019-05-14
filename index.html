@@ -30,7 +30,7 @@
 
     function myFunction() {
 
-    alert("Das kannst du mich fragen: Wie geht es dir? Was ist deine Lieblingsfarbe? Wie alt bist du? Was ist dein Lieblingsspiel? Was ist dein Lieblingsbuch? Was ist dein Lieblingsfilm?Was ist dein Lieblingslied? Warst du gerne in der Schule? Hast du eine Freundin? Kannst du den Zauberwürfel lösen? Was gibt 0:0? Was ist dein Lieblingsemoji? Wieviele Bücher von Harry Potter gibt es? Wieviele Filme von Harry Potter gibt es? Wen von Harry Potter magst du am liebsten? Wen hasst du von Harry Potter am meisten? Wer sagt Harry Potter, dass er ein Zauberer ist? Wie heisst der Vater von Harry Potter? Wie heisst die Mutter von Harry Potter? Hast du Kinder? Bist du schlau? Trinkst du Alkohol? Hast du Apple oder Samsung? Was ist blau?");
+    alert("Das kannst du mich fragen: Wie geht es dir? Was ist deine Lieblingsfarbe? Wie alt bist du? Was ist dein Lieblingsspiel? Was ist dein Lieblingsbuch? Was ist dein Lieblingsfilm?Was ist dein Lieblingslied? Warst du gerne in der Schule? Hast du eine Freundin? Kannst du den Zauberwürfel lösen? Was gibt 0:0? Was ist dein Lieblingsemoji? Wieviele Bücher von Harry Potter gibt es? Wieviele Filme von Harry Potter gibt es? Wen von Harry Potter magst du am liebsten? Wen hasst du von Harry Potter am meisten? Wer sagt Harry Potter, dass er ein Zauberer ist? Wie heisst der Vater von Harry Potter? Wie heisst die Mutter von Harry Potter? Hast du Kinder? Bist du schlau? Trinkst du Alkohol? Hast du Apple oder Samsung? Was ist blau? Bist du gross? Wer bist du?");
 
     }
 
@@ -106,6 +106,23 @@
                     return "You lose! Try again.";
 
                 }
+		    }
+
+            if (choice1 === "Wer bist du?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>Its meeeee, Marioooo</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
 			}
 
             if (choice1 === "Was ist blau?") {
@@ -115,6 +132,23 @@
                     // rock wins
 
                     return "<b>Der Himmel. Oh, ja, stimmt, dein Hemd...</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+		    }
+
+            if (choice1 === "Bist du gross?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>Neee, du ;)</b>";
 
                 } else {
 
