@@ -30,13 +30,116 @@
 
     function myFunction() {
 
-    alert("Das kannst du mich fragen: Wie geht es dir? Was ist deine Lieblingsfarbe? Wie alt bist du? Magst du Rosen? Was ist dein Lieblingsspiel? Was ist dein Lieblingsbuch? Was ist dein Lieblingsfilm?Was ist dein Lieblingslied? Warst du gerne in der Schule? Hast du eine Freundin? Kannst du den Zauberwürfel lösen?Was gibt 0:0? Was ist dein Lieblingsemoji? Wieviele Bücher von Harry Potter gibt es? Wieviele Filme von Harry Potter gibt es? Wen von Harry Potter magst du am liebsten? Wen hasst du von Harry Potter am meisten? Wer sagt Harry Potter, dass er ein Zauberer ist? Wie heisst der Vater von Harry Potter? Wie heisst die Mutter von Harry Potter? Hast du Kinder? Bist du schlau? Trinkst du Alkohol? Hast du Apple oder Samsung? Was ist blau? Was ist gross und rund? Wie viele Freunde hat du? Willst du einen Schneemann bauen? Kennst du Olav? Welcher Tag ist heute? Was bist du? Kennst du Star Wars? Kennst du Google? Wie gross bist du? Wieso heisst du Siri? kennst du Harry Potter? Was ist das stärkste Tier der Welt? Was ist dunkel? Was bedeutet WWW? Was ist deine iPhone Nummer? Magst du Disney? Warst du schon einmal in Amerika? Warst du schon einmal in Europa? Warst du schon einmal in Russland? Warst du schon einmal in Asien? Magst du Sushi? Magst du Fastfood? Sprichst du französisch? Verstehst du englisch? Sprichst du deutsch? Ich kann auch das kleine 1x1, Beispiel: 2x5, 8x9, usw.");
+    alert("Das kannst du mich fragen:\nWICHTIG! Wenn du mich erneut etwas fragen willst, musst du ganz oben auf dem Bildschirm auf das Bild drücken!\nWie geht es dir?\nWas ist deine Lieblingsfarbe?\nWie alt bist du?\nMagst du Rosen?\nWas ist dein Lieblingsspiel?\nWas ist dein Lieblingsbuch?\nWas ist dein Lieblingsfilm?\nWas ist dein Lieblingslied?\nWarst du gerne in der Schule?\nHast du eine Freundin?\nKannst du den Zauberwürfel lösen?\nWas gibt 0:0?\nWas ist dein Lieblingsemoji?\nWieviele Bücher von Harry Potter gibt es?\nWieviele Filme von Harry Potter gibt es?\nWen von Harry Potter magst du am liebsten?\nWen hasst du von Harry Potter am meisten?\nWer sagt Harry Potter, dass er ein Zauberer ist?\nWie heisst der Vater von Harry Potter?\nWie heisst die Mutter von Harry Potter?\nHast du Kinder?\nBist du schlau?\nTrinkst du Alkohol?\nHast du Apple oder Samsung?\nWas ist blau?\nWas ist gross und rund?\nWie viele Freunde hat du?\nWillst du einen Schneemann bauen?\nKennst du Olav?\nWelcher Tag ist heute?\nWas bist du?\nKennst du Star Wars?\nKennst du Google?\nWie gross bist du?\nWieso heisst du Siri?\nkennst du Harry Potter?\nWas ist das stärkste Tier der Welt?\nWas ist dunkel?\nWas bedeutet WWW?\nWas ist deine iPhone Nummer?\nMagst du Disney?\nWarst du schon einmal in Amerika?\nWarst du schon einmal in Europa?\nWarst du schon einmal in Russland?\nWarst du schon einmal in Asien?\nMagst du Sushi?\nMagst du Fastfood?\nSprichst du französisch?\nVerstehst du englisch?\nSprichst du deutsch?\nIch kann auch das kleine 1x1, Beispiel: 2x5, 8x9, usw.\nIch kann auch addieren von 0 bis 10, Beispiel: 0+3, 7+9, usw.");
 
     }
 
   </script>
   
+  <!-- präsentiert von kostenlose-javascripts.de -->
+<div id="infos">Bitte warten</div>
+<script type='text/javascript'>
+<!--
+function getCookieVal (offset) 
+  {
+  var endstr = document.cookie.indexOf (";", offset);
+  if (endstr == -1)
+     endstr = document.cookie.length;
+  return unescape(document.cookie.substring(offset, endstr));
+  }
 
+function GetCookie (name) 
+  {
+  var arg = name + "=";
+  var alen = arg.length;
+  var clen = document.cookie.length;
+  var i = 0;
+  while (i < clen) 
+     {
+     var j = i + alen;
+     if (document.cookie.substring(i, j) == arg)
+        return getCookieVal (j);
+     i = document.cookie.indexOf(" ", i) + 1;
+     if (i == 0) 
+        break; 
+     }
+  return null;
+  }
+
+function SetCookie (name, value) 
+  {
+  var argv = SetCookie.arguments;
+  var argc = SetCookie.arguments.length;
+  var expires = (2 < argc) ? argv[2] : null;
+  var path = (3 < argc) ? argv[3] : null;
+  var domain = (4 < argc) ? argv[4] : null;
+  var secure = (5 < argc) ? argv[5] : false;
+  document.cookie = name + "=" + escape (value) +
+    ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+    ((path == null) ? "" : ("; path=" + path)) +
+    ((domain == null) ? "" : ("; domain=" + domain)) +
+       ((secure == true) ? "; secure" : "");
+  }
+
+function rename() {
+	name=abfrage();
+
+	if(name=="nix") {
+		alert('Jetzt musst du aber was eingeben!');
+		rename();
+	} else {
+		SetCookie('name', name);
+		var zahl=GetCookie('zahl');
+		var text='<div align="center"><strong>Herzlich Willkommen '+ name +'</strong><br /><span style="font-size:10pt;">Du hast Siri schon '+zahl+' Fragen gestellt.<br /><a href="Javascript:rename()">(umbenennen)</a></span></div>';
+		document.getElementById('infos').innerHTML = text;
+	}
+}
+
+function abfrage() {
+	n = window.prompt("Wie darf ich dich nennen? Trag deinen Namen ein:","");
+	if(n=='') {
+		alert('Du musst schon etwas eingeben');
+	} else if(n==null||!n) {
+		return "nix";
+	} else {
+		return n;
+	}
+	abfrage();
+}
+
+function load()
+{
+	if(!GetCookie('name'))
+	{
+		var name=abfrage();
+		var zahl=0;
+		if(name!=="nix") {
+			SetCookie('name', name);
+		} else {
+			name="Unbekannter"
+		}
+	} else {
+		var name=GetCookie('name')
+		var zahl=GetCookie('zahl')
+	}
+	zahl++;
+	SetCookie('zahl', zahl);
+
+
+	var text='<div align="center"><strong>Herzlich Willkommen '+ name +'</strong><br /><span style="font-size:10pt;">Du hast Siri schon '+zahl+' Fragen gestellt<br /><a href="Javascript:rename()">(umbenennen)</a></span></div>';
+	document.getElementById('infos').innerHTML = text;
+}
+//-->
+</script>
+<br />
+<center>JavaScript der Namensabfrage von <a href="http://www.kostenlose-javascripts.de/javascripts/verschiedenes/namensabfrage/" style="text-decoration: none; color=" target="_blank">kostenlose-javascripts.de</a></center>
+<br />
+<script type="text/javascript">load();</script>
+<!-- präsentiert von kostenlose-javascripts.de -->
+
+	<script>
+		alert("Wichtige Informationen zur Nutzung von Siri:\nEs ist wichtig, wenn du eine Frage stellst, dass du darauf achtest, dass am Ende des Satzes ein Fragezeichen ist. Es sollte ebenfalls darauf geachtet werden, dass die Sätze grammatisch korrekt sind. Hier hast du alle Fragen, welche Siri bereits beantworten kann: <button onclick="myFunction()">Fragen Siri</button>")
+	</script>
 
 
   <script>
@@ -2646,6 +2749,2063 @@
                     // rock wins
 
                     return "<b>100</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 1+0?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>1</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 1+1?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>2</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 1+2?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>3</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 1+3?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>4</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 1+4?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>5</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 1+5?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>6</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 1+6?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>7</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 1+7?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>8</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 1+8?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>9</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 1+9?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>10</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 1+10?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>11</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 2+0?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>2</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 2+1?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>3</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 2+2?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>4</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 2+3?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>5</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 2+4?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>6</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 2+5?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>7</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 2+6?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>8</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 2+7?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>9</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 2+9?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>11</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 2+10?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>12</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 3+0?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>3</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 3+1?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>4</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 3+2?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>5</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 3+3?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>6</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 3+4?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>7</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 3+5?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>8</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 3+6?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>9</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 3+7?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>10</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 3+8?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>11</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 3+9?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>12</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 3+10?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>13</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 4+1?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>5</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 4+0?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>4</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 4+2?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>6</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 4+3?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>7</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 4+4?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>8</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 4+5?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>9</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 4+6?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>10</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 4+7?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>11</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 4+8?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>12</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 4+9?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>13</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 4+10?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>14</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 5+0") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>5</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 5+1") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>6</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 5+2?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>7</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 5+3?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>8</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 5+4?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>9</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 5+5") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>10</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 5+6?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>11</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 5+7?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>12</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 5+8?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>13</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 5+9") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>14</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 5+10?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>15</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 6+0?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>6</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 6+1?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>7</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 6+2?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>8</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 6+3?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>9</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 6+4?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>10</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 6+5?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>11</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 6+6?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>12</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 6+7?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>13</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 6+8?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>14</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 6+9?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>15</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 6+10?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>16</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 7+0?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>7</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 7+1?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>8</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 7+2?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>9</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 7+3?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>10</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 7+4?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>11</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 7+5?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>12</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 7+6?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>13</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 7+7?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>14</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 7+8?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>15</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 7+9") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>16</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 7+10?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>17</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 8+0?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>8</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 8+1?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>9</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 8+2?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>10</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 8+3?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>11</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 8+4?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>12</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 8+5") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>13</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 8+6?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>14</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 8+7?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>15</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 8+8?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>16</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 8+9?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>17</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 8+10?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>18</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 9+0?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>9</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 9+1?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>10</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 9+2?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>11</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 9+3?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>12</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 9+4?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>13</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 9+5?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>14</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 9+6?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>15</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 9+7?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>16</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 9+8?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>17</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 9+9?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>18</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 9+10?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>19</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 10+?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b></b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 10+0?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>10</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 10+1?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>11</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 10+2?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>12</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 10+3?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>13</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 10+4?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>14</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 10+5?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>15</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 10+6?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>16</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 10+7?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>17</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 10+8?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>18</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 10+9?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>19</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 10+10?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>20</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 0+0?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>0</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 0+1?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>1</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 0+2?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>2</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 0+3?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>3</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 0+4?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>4</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 0+5?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>5</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 0+6?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>6</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 0+7?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>7</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 0+8?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>8</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 0+9?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>9</b>";
+
+                } else {
+
+                    // paper wins
+
+                    return "You lose! Try again.";
+
+                }
+			}
+
+            if (choice1 === "Was gibt 0+10?") {
+
+                if (choice2 === "Siri") {
+
+                    // rock wins
+
+                    return "<b>10</b>";
 
                 } else {
 
